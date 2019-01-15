@@ -38,9 +38,11 @@ class Song < ActiveRecord::Base
     # ignores blank notes
     def note_contents=(contents)
         contents.each do |content|
+            # next if content == ''
             if !content.empty?
-                note = Note.find_or_create_by(content: content)
-                self.notes << note
+                note = self.notes.build(content: content)
+                # note = Note.find_or_create_by(content: content)
+                # self.notes << note
             end
         end
     end
