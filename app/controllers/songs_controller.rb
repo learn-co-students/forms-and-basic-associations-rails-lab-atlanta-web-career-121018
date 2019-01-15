@@ -46,8 +46,11 @@ class SongsController < ApplicationController
 
   private
 
-  def song_params
-    params.require(:song).permit(:title)
+  def song_params                # Is recieved from views....naming comes from the form views
+    params.require(:song).permit(:title, :artist_name, :genre_id, :note_contents => [])
   end
 end
 
+# artist_attributes: [:name],
+# genre_attributes: [:name],
+# notes_attributes: [:content]
